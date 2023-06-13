@@ -1,0 +1,133 @@
+@import url("../font/font.scss");
+/* -------------------------------- Color Variable Start -------------------------------- */
+
+$Bg_Dark_color: #000;
+$Bg_Dark_color_2: #0d0d0d;
+$White_color: #fff;
+$Second_color: #ffb400;
+$Text_color_2:#e3e3e3;
+
+/* -------------------------------- Color Variable End -------------------------------- */
+/* -------------------------------- Mixin Start -------------------------------- */
+
+@mixin PFont{
+    
+}
+
+/* -------------------------------- Mixin End -------------------------------- */
+* {
+  outline: 0 !important;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  a {
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    text-decoration: none;
+  }
+}
+html {
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+svg,
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+html {
+  .container {
+    max-width: 1440px;
+    position: relative;
+  }
+}
+
+p {
+  margin-bottom: 0px;
+}
+p {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ::selection {
+//   color: #fff;
+//   background: #0085ff;
+// }
+b,
+strong {
+  font-weight: 600;
+}
+button {
+  &:focus {
+    box-shadow: none;
+  }
+}
+.ct-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  background-color: $Bg_Dark_color;
+  color: $White_color;
+}
+
+/* -------------------------------- Main Page CSS Start -------------------------------- */
+
+.main-pr-inner-box {
+  min-height: 100dvh;
+}
+.main-profile-section {
+  width: 305px;
+  height: 100%;
+}
+.main-box-section {
+  width: calc(100% - 413px);
+  background-color: $Bg_Dark_color_2;
+}
+.header-main-section {
+  width: 108px;
+}
+
+/* -------------------------------- Main Page CSS End -------------------------------- */
+/* -------------------------------- Profile Main Page CSS Start -------------------------------- */
+
+.main-profile-inner-section {
+  padding: 58px 43px;
+}
+.profile-pic-inner-section {
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border: 3px solid $Second_color;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-bottom: 31px;
+  }
+  h3 {
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 123.6%;
+    margin-bottom: 15px;
+  }
+  p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 24px;
+    text-transform: capitalize;
+    font-feature-settings: "calt" off, "kern" off;
+    color: $Text_color_2;
+  }
+}
+
+/* -------------------------------- Profile Main Page CSS End -------------------------------- */
