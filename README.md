@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `For live server check this link`
+
+[https://master--jade-crisp-129d4d.netlify.app/](https://master--jade-crisp-129d4d.netlify.app/)
+
 ### `npm start`
 
 Runs the app in the development mode.\
