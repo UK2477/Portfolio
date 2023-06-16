@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
 
-const Service = () => {
+const Education = () => {
   useEffect(() => {
-    document.title = "Service";
+    document.title = "Education";
   }, []);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -12,7 +12,7 @@ const Service = () => {
       setLoading(false);
     }, 2000);
   }, []);
-  return <>{loading ? <Loader /> : <>Service</>}</>;
+  return <>{loading ? <Loader /> : <>Education</>}</>;
 };
 
-export default Service;
+export default Education;

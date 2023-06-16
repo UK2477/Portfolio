@@ -13,6 +13,7 @@ const Main = () => {
             <div className="main-profile-section">
               <div className="main-profile-inner-section">
                 <ProfileDetails />
+                {/* <SmoothScroll /> */}
               </div>
             </div>
             <div className="main-box-section">

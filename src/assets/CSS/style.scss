@@ -3,18 +3,119 @@
 
 $Bg_Dark_color: #000;
 $Bg_Dark_color_2: #0d0d0d;
+$Bg_Dark_color_3: #f0f0f6;
+$Bg_Dark_color_4: #865e00;
 $White_color: #fff;
 $Second_color: #ffb400;
-$Text_color_2:#e3e3e3;
+$Text_color_2: #e3e3e3;
+$Text_color_3: #2b2b2b;
+$hue: 223;
+$bg: hsl($hue, 10%, 90%);
+$fg: hsl($hue, 10%, 10%);
 
-/* -------------------------------- Color Variable End -------------------------------- */
-/* -------------------------------- Mixin Start -------------------------------- */
-
-@mixin PFont{
-    
+.tooltip {
+  .tooltip-arrow {
+    &::before {
+      border-top-color: $Text_color_3;
+    }
+  }
+  .tooltip-inner {
+    background-color: $Text_color_3;
+  }
 }
 
-/* -------------------------------- Mixin End -------------------------------- */
+/* -------------------------------- Color Variable End -------------------------------- */
+/* -------------------------------- ScrollBar Start -------------------------------- */
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: $Bg_Dark_color_4;
+}
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* -------------------------------- ScrollBar End -------------------------------- */
+/* -------------------------------- Loader Start -------------------------------- */
+.main-loader-section {
+  height: calc(100dvh - 56px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .pl {
+    display: block;
+    width: 70px;
+    height: 70px;
+  }
+  .pl__ring,
+  .pl__ball {
+    animation: ring 2s ease-out infinite;
+  }
+  .pl__ball {
+    animation-name: ball;
+  }
+
+  /* Dark theme  */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: hsl($hue, 10%, 10%);
+      --fg: hsl($hue, 10%, 90%);
+    }
+  }
+
+  @keyframes ring {
+    from {
+      stroke-dasharray: 0 257 0 0 1 0 0 258;
+    }
+    25% {
+      stroke-dasharray: 0 0 0 0 257 0 258 0;
+    }
+    50%,
+    to {
+      stroke-dasharray: 0 0 0 0 0 515 0 0;
+    }
+  }
+  @keyframes ball {
+    from,
+    50% {
+      animation-timing-function: ease-in;
+      stroke-dashoffset: 1;
+    }
+    64% {
+      animation-timing-function: ease-in;
+      stroke-dashoffset: -109;
+    }
+    78% {
+      animation-timing-function: ease-in;
+      stroke-dashoffset: -145;
+    }
+    92% {
+      animation-timing-function: ease-in;
+      stroke-dashoffset: -157;
+    }
+    57%,
+    71%,
+    85%,
+    99%,
+    to {
+      animation-timing-function: ease-out;
+      stroke-dashoffset: -163;
+    }
+  }
+}
+
+/* -------------------------------- Loader End -------------------------------- */
 * {
   outline: 0 !important;
   font-family: "Inter", sans-serif;
@@ -87,21 +188,72 @@ body {
 }
 .main-profile-section {
   width: 305px;
-  height: 100%;
+  height: 100dvh;
+  overflow-y: auto;
 }
 .main-box-section {
   width: calc(100% - 413px);
   background-color: $Bg_Dark_color_2;
+  .main-box-inner-section {
+    padding: 28px;
+    height: 100dvh;
+    overflow-y: auto;
+    > div {
+      height: 100%;
+    }
+  }
 }
 .header-main-section {
   width: 108px;
+}
+.main-header-inner-section {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .main-header-box {
+    padding: 20px;
+    ul {
+      gap: 43px;
+      li {
+        width: 100%;
+        text-align: center;
+        a {
+          background-color: $Bg_Dark_color_3;
+          width: 45px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          margin: 0 auto;
+          transition: all 0.6s ease;
+          svg {
+            width: 20px;
+            color: $Bg_Dark_color;
+            transition: all 0.6s ease;
+            path {
+              stroke: currentColor;
+            }
+          }
+          &:hover,
+          &.active {
+            background-color: $Second_color;
+            svg {
+              color: $White_color;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 /* -------------------------------- Main Page CSS End -------------------------------- */
 /* -------------------------------- Profile Main Page CSS Start -------------------------------- */
 
 .main-profile-inner-section {
-  padding: 58px 43px;
+  padding: 58px 37px;
 }
 .profile-pic-inner-section {
   .profile-pic {
@@ -128,6 +280,311 @@ body {
     font-feature-settings: "calt" off, "kern" off;
     color: $Text_color_2;
   }
+  ul {
+    gap: 15px;
+    padding: 15px 0;
+    padding-bottom: 25px;
+    li {
+      a {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        border-radius: 50%;
+        border: 1px solid $Second_color;
+        background-color: $Second_color;
+        color: $Text_color_3;
+        align-items: center;
+        justify-content: center;
+        svg {
+          width: 16px;
+        }
+        &:hover {
+          background-color: transparent;
+          color: $Second_color;
+        }
+      }
+    }
+  }
+}
+.profile-det {
+  padding: 25px 0;
+  li {
+    margin-bottom: 9px;
+    span {
+      background-color: $Second_color;
+      padding: 1px 5px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 24px;
+      text-transform: capitalize;
+      font-feature-settings: "calt" off, "kern" off;
+      color: $Text_color_3;
+    }
+    p {
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 24px;
+      text-align: right;
+      text-transform: capitalize;
+      font-feature-settings: "calt" off, "kern" off;
+    }
+    &.active p {
+      color: #7eb942;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.progress-main-section {
+  padding: 25px 0;
+  h5 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 123.6%;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+  }
+  .progress-bar-inner {
+    margin-bottom: 9px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    .progressLabel {
+      margin-bottom: 5px;
+      h6,
+      p {
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 24px;
+        text-transform: capitalize;
+        font-feature-settings: "calt" off, "kern" off;
+        color: #e3e3e3;
+        margin: 0;
+      }
+    }
+    .progressVisualFull {
+      display: flex;
+      height: 8px;
+      border-radius: 50px;
+      overflow: hidden;
+      border: 1px solid $Second_color;
+      background-color: transparent;
+      align-items: center;
+      padding: 2px;
+    }
+    .progressVisualPart {
+      transition: width 2s;
+      background-color: $Second_color;
+      height: 2px;
+    }
+  }
+}
+.extra-skills-section {
+  .extra-skills-inner-section {
+    padding: 25px 0;
+    h5 {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 123.6%;
+      text-transform: capitalize;
+      margin-bottom: 15px;
+    }
+    ul {
+      li {
+        margin-bottom: 5px;
+        gap: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        svg {
+          color: $Second_color;
+        }
+        p {
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 24px;
+          text-transform: capitalize;
+          font-feature-settings: "calt" off, "kern" off;
+          color: $Text_color_2;
+        }
+      }
+    }
+  }
+}
+.cv-button {
+  padding-top: 25px;
+}
+.ct-cv-button {
+  border-radius: 0;
+  padding: 11px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: $Text_color_3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 19px;
+  border: 1px solid $Second_color;
+  background-image: -webkit-linear-gradient(
+    30deg,
+    $Second_color 50%,
+    transparent 50%
+  );
+  background-image: linear-gradient(30deg, $Second_color 50%, transparent 50%);
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  background-color: $Second_color;
+  &:hover {
+    border: 1px solid $Second_color;
+    background-color: transparent;
+    background-position: 110%;
+    color: $Second_color;
+  }
+}
+.ct-hr {
+  opacity: 0.5;
+  border-color: $Bg_Dark_color_3;
+}
+/* -------------------------------- Profile Main Page CSS End -------------------------------- */
+/* -------------------------------- Home main section CSS Start -------------------------------- */
+
+.home-main-inner-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $Bg_Dark_color;
+  position: relative;
+  .home-main-box {
+    max-width: 500px;
+    margin: 0 auto;
+    h1 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 123.6%;
+      color: $White_color;
+      margin-bottom: 31px;
+      span {
+        color: $Second_color;
+      }
+    }
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      text-transform: capitalize;
+      font-feature-settings: "calt" off, "kern" off;
+      color: $Text_color_2;
+      margin-bottom: 50px;
+    }
+  }
+}
+.home-animation-main {
+  .home-animation {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    border: 2px solid rgba(255, 180, 0, 0.8);
+    border-radius: 50%;
+    &.home-animation-1 {
+      top: 30px;
+      left: 30px;
+      animation: HomeAnimation 2s infinite linear alternate;
+    }
+    &.home-animation-2 {
+      top: 52px;
+      left: 50%;
+      border: 2px solid rgba(5, 255, 0, 0.8);
+      animation: HomeAnimation 3s infinite linear alternate;
+      animation-delay: 1.5s;
+    }
+    &.home-animation-3 {
+      top: 70px;
+      right: 53px;
+      border-radius: 0;
+      animation: HomeAnimation 2s infinite linear alternate;
+      animation-delay: 1s;
+    }
+    &.home-animation-4 {
+      bottom: 24px;
+      right: 33px;
+      border-radius: 0;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      background-color: rgba(255, 46, 0, 0.8);
+      border: none;
+      animation: HomeAnimation 3s infinite linear alternate;
+      animation-delay: 1.5s;
+    }
+    &.home-animation-5 {
+      bottom: 57px;
+      right: 40%;
+      animation: HomeAnimation 2s infinite linear alternate;
+      animation-delay: 1s;
+    }
+    &.home-animation-6 {
+      bottom: 30%;
+      left: 30%;
+      border: 2px solid rgba(0, 71, 255, 0.8);
+      border-radius: 0;
+      animation: HomeAnimation 3s infinite linear alternate;
+      animation-delay: 1.5s;
+    }
+    &.home-animation-7 {
+      bottom: 29px;
+      left: 88px;
+      border: 2px solid rgba(5, 255, 0, 0.8);
+      animation: HomeAnimation 2s infinite linear alternate;
+      animation-delay: 1s;
+    }
+    @keyframes HomeAnimation {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(10px);
+      }
+    }
+  }
+}
+.ct-hire-me-button {
+  background: $Second_color;
+  border-radius: 5px;
+  padding: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: $Text_color_3;
+  border: 1px solid $Second_color;
+  background-image: linear-gradient(30deg, $Second_color 50%, transparent 50%);
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  transition: all 300ms ease-in-out;
+  background-color: $Second_color;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  min-width: 154px;
+  justify-content: center;
+  gap: 11px;
+  svg {
+    width: 18px;
+  }
+  &:hover {
+    border: 1px solid $Second_color;
+    background-color: transparent;
+    background-position: 110%;
+    color: $Second_color;
+  }
 }
 
-/* -------------------------------- Profile Main Page CSS End -------------------------------- */
+/* -------------------------------- Home main section CSS End -------------------------------- */

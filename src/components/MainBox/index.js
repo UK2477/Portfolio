@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Service from "./Service";
+import Education from "./Education";
+import History from "./History";
+import Portfolio from "./Portfolio";
 
 const MainBox = () => {
   return (
@@ -9,6 +12,9 @@ const MainBox = () => {
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="/service" element={<Service />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
     </div>
   );
