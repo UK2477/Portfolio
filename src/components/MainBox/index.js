@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "./Home";
 import Service from "./Service";
 import Education from "./Education";
@@ -10,7 +10,8 @@ const MainBox = () => {
   return (
     <div>
       <Routes>
-        <Route index path="/" element={<Home />} />
+      <Route path="/index.html" element={<Navigate to="/" />} />
+        <Route path="/" element={<Home />} />
         <Route path="/service" element={<Service />} />
         <Route path="/education" element={<Education />} />
         <Route path="/history" element={<History />} />

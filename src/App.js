@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/CSS/style.scss";
-import "./assets/CSS/responsive.scss";
+import "./assets/css/style.scss";
+import "./assets/css/responsive.scss";
 import Main from "./components/Main";
 
 function App() {
