@@ -8,14 +8,18 @@ import CVButton from "./CVButton/CVButton";
 
 const ProfileDetails = () => {
   return (
-    <>
-      <ProfilePic />
-      <ProfileDet />
-      <LangProg />
-      <SkillsProg />
-      <ExtraSkills />
-      <CVButton />
-    </>
+    <div className="ProfileDetails-main-slider">
+      <div className="ProfileDetails-main-slider-top">
+        <ProfilePic />
+        <ProfileDet />
+        <LangProg />
+        <SkillsProg />
+        <ExtraSkills />
+      </div>
+      <div className="ProfileDetails-main-slider-bottom">
+        <CVButton />
+      </div>
+    </div>
   );
 };
 

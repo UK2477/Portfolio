@@ -1,6 +1,5 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import ProfileImg from "../../../assets/images/profile.png";
 import { Link } from "react-router-dom";
 import {
   FaFacebookF,
@@ -14,7 +13,7 @@ const ProfilePic = () => {
     <div className="profile-pic-section">
       <div className="profile-pic-inner-section text-center">
         <div className="profile-pic">
-          <Image src={ProfileImg} />
+          <Image src="./assets/images/profile.png" />
         </div>
         <h3>Denny Johnson</h3>
         <p>Web Designer</p>

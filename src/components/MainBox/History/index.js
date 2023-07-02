@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import Loader from '../Loader/Loader';
+import React, { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
+import TitleHeader from "../TitleHeader/TitleHeader";
+import WorkHistory from "./WorkHistory/WorkHistory";
 
 const History = () => {
   useEffect(() => {
@@ -12,7 +14,23 @@ const History = () => {
       setLoading(false);
     }, 2000);
   }, []);
-  return <>{loading ? <Loader /> : <>History</>}</>;
-}
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <section className="work-main-section">
+          <div className="work-main-inner">
+            <TitleHeader
+              TitleHeaderTitle="Work History"
+              TitleHeaderDes="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. lorem ipsum"
+            />
+            <WorkHistory />
+          </div>
+        </section>
+      )}
+    </>
+  );
+};
 
-export default History
+export default History;

@@ -8,9 +8,9 @@ import Portfolio from "./Portfolio";
 
 const MainBox = () => {
   return (
-    <div>
+    <div className="MainBox-main-section">
       <Routes>
-      <Route path="/index.html" element={<Navigate to="/" />} />
+        <Route path="/index.html" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/service" element={<Service />} />
         <Route path="/education" element={<Education />} />
